@@ -73,5 +73,31 @@ namespace Microsoft.WindowsAzure.Management.ScenarioTest.CloudServiceTests
         {
             RunPowerShellTest("Test-StartAzureEmulatorTwice");
         }
-    }
+
+        [TestMethod]
+        [TestCategory(Category.All)]
+        [TestCategory(Category.CloudService)]
+        public void TestStartAzureEmulatorAndValidateBrower()
+        {
+            RunPowerShellTest("Test-StartAzureEmulatorAndValidateBrower");
+        }
+
+        [TestMethod]
+        [TestCategory(Category.All)]
+        [TestCategory(Category.CloudService)]
+        public void TestStartAzureEmulatorAndValidatePHP()
+        {
+            RunPowerShellTest("Test-StartAzureEmulatorAndValidatePHP");
+        }
+
+        [TestMethod]
+        [TestCategory(Category.All)]
+        [TestCategory(Category.CloudService)]
+        public void TestStartAzureEmulatorAndValidateDjiango()
+        {
+            RunPowerShellTest("Test-StartAzureEmulatorAndValidateDjiango");
+        }
+    } 
+    
 }
+

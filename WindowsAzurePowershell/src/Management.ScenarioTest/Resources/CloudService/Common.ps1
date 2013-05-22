@@ -184,3 +184,36 @@ function Test-RemoteDesktop
     foreach ($c in "P@ssw0rd!".ToCharArray()) {$password.AppendChar($c)}
     Enable-AzureServiceProjectRemoteDesktop -Username user1 -Password $password
 }
+function Test-ValidateResultInBrowser
+{
+              param([string] $uri, [string] $expectedString)
+
+              $client = New-Object System.Net.WebClient
+       
+              $resultString = $client.DownloadString($uri)
+              return $resultString.ToUpper().Contains($expectedString.ToUpper())
+}
+
+<#
+.SYNOPSIS
+Creates new cloud service project with one PHP web role.
+#>
+function New-TinyCloudServiceProject1
+{
+    param([string] $name)
+
+    New-AzureServiceProject $name
+    Add-AzurePhpWebRole 
+}
+
+<#
+.SYNOPSIS
+Creates new cloud service project with one Django web role.
+#>
+function New-TinyCloudServiceProject2
+{
+    param([string] $name)
+
+    New-AzureServiceProject $name
+    Add-AzureDjangoWebRole 
+}

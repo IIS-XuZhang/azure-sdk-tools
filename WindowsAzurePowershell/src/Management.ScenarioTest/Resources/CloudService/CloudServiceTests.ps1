@@ -431,3 +431,47 @@ function Test-StartAzureEmulatorTwice
 	# Assert
 	Assert-NotNull $service
 }
+
+<#
+.SYNOPSIS
+Executes Start-AzureEmulator two times and expect to proceed.
+#>
+function Test-StartAzureEmulatorAndValidateBrower
+{
+              # Setup
+              New-TinyCloudServiceProject test
+
+              # Test
+              $service = Start-AzureEmulator
+              $result = Test-ValidateResultInBrowser "http://127.0.0.1:81" "Hello world"
+       
+              # Assert
+              Assert-NotNull $service 
+              Assert-True {$result}
+}
+function Test-StartAzureEmulatorAndValidatePHP
+{
+              # Setup
+              New-TinyCloudServiceProject1 phptest
+
+              # Test
+              $service = Start-AzureEmulator
+              $result = Test-ValidateResultInBrowser "http://127.0.0.1:81" "phpinfo()"
+       
+              # Assert
+              Assert-NotNull $service 
+              Assert-True {$result}
+}
+function Test-StartAzureEmulatorAndValidateDjiango
+{
+              # Setup
+              New-TinyCloudServiceProject2 Djiangotest123
+
+              # Test
+              $service = Start-AzureEmulator
+              $result = Test-ValidateResultInBrowser "http://127.0.0.1:81" "It worked!"
+       
+              # Assert
+              Assert-NotNull $service 
+              # Assert-True {$result}
+}
